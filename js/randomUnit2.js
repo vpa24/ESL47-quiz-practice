@@ -6,12 +6,14 @@ $(function () {
     {
       name: "ecosystem",
       type: "n",
-      definition: "all the living things, in an area and the effect they have on each other and the environment",
+      definition:
+        "all the living things, in an area and the effect they have on each other and the environment",
     },
     {
       name: "climate",
       type: "n",
-      definition: "the general weather conditions usually found in a particular place",
+      definition:
+        "the general weather conditions usually found in a particular place",
     },
     {
       name: "threathen",
@@ -21,7 +23,8 @@ $(function () {
     {
       name: "fossil fuel",
       type: "n",
-      definition: "a source of energy like coal, gas, and petroleum, that was formed inside the Earth millions of years ago",
+      definition:
+        "a source of energy like coal, gas, and petroleum, that was formed inside the Earth millions of years ago",
     },
     {
       name: "greenhouse gas",
@@ -42,6 +45,88 @@ $(function () {
       name: "cause",
       type: "n",
       definition: "someone or something that makes something happen",
+    },
+    {
+      name: "absord",
+      type: "v",
+      definition: "to take in a liquid or gas through a surface and hold it",
+    },
+    {
+      name: "construction",
+      type: "n",
+      definition:
+        "the process of building something, usually large structures such as houses, roads, or bridges",
+    },
+    {
+      name: "destruction",
+      type: "n",
+      definition:
+        "the act of causing so much damage to something that it stops existing because it cannot be repaired",
+    },
+    {
+      name: "effect",
+      type: "n",
+      definition: "result; a change that happens because of a cause",
+    },
+    {
+      name: "farming",
+      type: "n",
+      definition: "the job of working on a farm or organizing work on a farm",
+    },
+    {
+      name: "logging",
+      type: "n",
+      definition: "the activity or business of cutting down trees for wood",
+    },
+    {
+      name: "rainforest",
+      type: "n",
+      definition: "a foreset in a tropical area that gets a lot of rain",
+    },
+    {
+      name: "annual",
+      type: "adj",
+      definition: "occurring once every year",
+    },
+    {
+      name: "area",
+      type: "n",
+      definition: "a particular part of a place, piece of land, or country",
+    },
+    {
+      name: "challenge",
+      type: "n",
+      definition:
+        "something that needs great mental or physical effort in order to be done successfully and therefore tests a person's ability",
+    },
+    {
+      name: "consequence",
+      type: "n",
+      definition:
+        "a result of a particular action or situation, often one that is bad or not convenient",
+    },
+    {
+      name: "contribute to",
+      type: "v",
+      definition:
+        "to give or supply (something, such as money or time) as a part or share",
+    },
+    {
+      name: "issue",
+      type: "n",
+      definition: "a vital or unsettled matter concern, problem",
+    },
+    {
+      name: "predict",
+      type: "v",
+      definition:
+        "say or estimate that (a specified thing) will happen in the future or will be a consequence of something",
+    },
+    {
+      name: "trend",
+      type: "n",
+      definition:
+        "a general direction in which something is developing or changing",
     },
   ];
 
