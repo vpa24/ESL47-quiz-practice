@@ -4,51 +4,48 @@ $(function () {
 
   var vocabulary = [
     {
-      name: "victory",
-      definition: "succes in a game, an election, a war, etc.",
+      name: "ecosystem",
+      type: "n",
+      definition: "all the living things, in an area and the effect they have on each other and the environment",
     },
     {
-      name: "traditional",
-      definition:
-        "a beflief, custom, or way of doing something that has existed for a long time",
+      name: "climate",
+      type: "n",
+      definition: "the general weather conditions usually found in a particular place",
     },
     {
-      name: "embarrassed",
-      definition: "feeling ashamed and uncomfotable",
+      name: "threathen",
+      type: "v",
+      definition: "to be likely to damage or harm something",
     },
     {
-      name: "celebrate",
-      definition: "to do something special for an important event",
+      name: "fossil fuel",
+      type: "n",
+      definition: "a source of energy like coal, gas, and petroleum, that was formed inside the Earth millions of years ago",
     },
     {
-      name: "represent",
-      definition: "to stand for or in place of",
+      name: "greenhouse gas",
+      type: "n",
+      definition: "a gas that makes the air around the Earth warmer",
     },
     {
-      name: "national",
-      definition: "connected or shared with a specific nation",
+      name: "atmostphere",
+      type: "n",
+      definition: "the layer around the Earth",
     },
     {
-      name: "common",
-      definition: "usual; shared by all; happening often",
+      name: "global warming",
+      type: "n",
+      definition: "an increase in the Earth's temperature because of pollution",
     },
     {
-      name: "additional",
-      definition: "extra to what already exists; more than what is usual",
-    },
-    {
-      name: "decoration",
-      definition:
-        "something that makes another thing look more attractive on special occasions",
-    },
-    {
-      name: "ritual",
-      definition:
-        "a ceremony; something that is done in the same way every time",
+      name: "cause",
+      type: "n",
+      definition: "someone or something that makes something happen",
     },
   ];
 
-  function randomWords(words) {
+  function randomWords(words, number) {
     const shuffledWords = [...words]; // Make a copy of the input array
     for (let i = shuffledWords.length - 1; i > 0; i--) {
       let j = Math.floor(Math.random() * (i + 1));
@@ -57,11 +54,58 @@ $(function () {
         shuffledWords[i],
       ];
     }
-    return shuffledWords.slice(0, 10);
+    return shuffledWords.slice(0, number);
+  }
+
+  function getRandomWordsWithN_V_Adj(words) {
+    const types = ["n", "v", "adj"];
+
+    // filter words to only include the desired types
+    const filteredWords = words.filter((word) => types.includes(word.type));
+
+    // group and shuffle the remaining words by type
+    const groupedWords = filteredWords.reduce((groups, word) => {
+      const type = word.type;
+      if (!groups[type]) {
+        groups[type] = [];
+      }
+      groups[type].push(word);
+      return groups;
+    }, {});
+
+    const shuffledWords = Object.keys(groupedWords).reduce((shuffled, type) => {
+      shuffled[type] = shuffle(groupedWords[type]);
+      return shuffled;
+    }, {});
+
+    // select 6 random words of each type and map them to objects
+    const randomWords = types.flatMap((type) => {
+      return shuffledWords[type].slice(0, 3).map((word) => ({
+        name: word.name,
+        type: word.type,
+      }));
+    });
+
+    return randomWords;
+  }
+
+  // shuffle function (for shuffling the words within each group)
+  function shuffle(array) {
+    const shuffled = [...array];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    return shuffled;
+  }
+
+  function dispplayVocabulary_1(list_1) {
+    var names = list_1.map((word) => word.name);
+    return $("#list_1").html(names.join(" "));
   }
 
   function displayVocabulary(vocabulary) {
-    vocabularyList = randomWords(vocabulary);
+    vocabularyList = randomWords(vocabulary, 10);
     let vocaText = "<ol>";
     vocabularyList.forEach((word, index) => {
       vocaText += `<li>${
@@ -75,7 +119,7 @@ $(function () {
   }
 
   function displaydefinition(vocabulary) {
-    definitionList = randomWords(vocabulary).slice(0, 10);
+    definitionList = randomWords(vocabulary, 10);
     let vocaText = "<ol type='a'>";
     definitionList.forEach((word) => {
       vocaText += `<li>${word.definition}</li>`;
@@ -95,6 +139,65 @@ $(function () {
     return String.fromCharCode(definition + 96);
   }
 
+  function filterVocabularyByType(vocabularyList) {
+    for (let i = 0; i < vocabularyList.length; i++) {
+      const vocabulary = vocabularyList[i];
+      if (vocabulary.type === "n") {
+        nounsList.push(vocabulary.name);
+      } else if (vocabulary.type === "v") {
+        verbsList.push(vocabulary.name);
+      } else if (vocabulary.type == "adj") {
+        adjectivesList.push(vocabulary.name);
+      }
+    }
+  }
+  function compareLists(userList, referenceList, type) {
+    var source = 0;
+    const matchingItems = [];
+    var nonMatchingItems = [];
+
+    userList.forEach((item) => {
+      if (
+        type === "adj" &&
+        referenceList.includes(item) &&
+        adjectivesList.includes(item)
+      ) {
+        matchingItems.push(item);
+        source++;
+      } else if (
+        type === "noun" &&
+        referenceList.includes(item) &&
+        nounsList.includes(item)
+      ) {
+        matchingItems.push(item);
+        source++;
+      } else if (
+        type === "verb" &&
+        referenceList.includes(item) &&
+        verbsList.includes(item)
+      ) {
+        matchingItems.push(item);
+        source++;
+      }
+    });
+    nonMatchingItems = referenceList.filter((item) => !userList.includes(item));
+
+    return { matching: matchingItems, notMatching: nonMatchingItems, source };
+  }
+
+  function getSource_displayAnwser(user, original, type) {
+    const comparison = compareLists(user, original, type);
+    var matching = comparison.matching ? comparison.matching.join(", ") : "";
+    var notMatching = comparison.notMatching
+      ? comparison.notMatching.join(", ")
+      : "";
+    $(`#${type}s_anwser`).html(`${matching}`);
+    $(`#${type}s_anwser`).append(
+      `<br><span class="fw-b text-danger"> ${notMatching}</span>`
+    );
+    return comparison.source;
+  }
+
   function processEmptyAnswer(emptyAnswer) {
     var names = emptyAnswer.map((word) => word.name);
     var emptyAnswerString = names.join(", ");
@@ -105,10 +208,38 @@ $(function () {
       `Please find the answer of <b>${emptyAnswerString}</b>.`
     );
   }
+  var randomVocabulary = randomWords(vocabulary, 10);
+  var randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 15);
+  var list_1 = randomWords(randomWordsWithN_V_Adj);
 
-  const randomVocabulary = randomWords(vocabulary);
   displaydefinition(randomVocabulary);
   displayVocabulary(randomVocabulary);
+  dispplayVocabulary_1(list_1);
+
+  function addFireworks() {
+    const container = document.querySelector(".fireworks");
+    const fireworks = new Fireworks.default(container, {
+      autoresize: true,
+      opacity: 0.5,
+      sound: {
+        enabled: true,
+        files: [
+          "sounds/explosion0.mp3",
+          "sounds/explosion1.mp3",
+          "sounds/explosion2.mp3",
+        ],
+        volume: {
+          min: 4,
+          max: 8,
+        },
+      },
+    });
+    fireworks.start();
+    setTimeout(() => {
+      fireworks.stop();
+    }, 3000);
+  }
+
   $("#check").on("click", function () {
     var source = 0;
     var incorrectVocabulary = [];
@@ -147,7 +278,7 @@ $(function () {
         );
       } else {
         $("#message").html(
-          `Great job! You got a perfect 10 out of 10! You're amazing!! 🎉👍`
+          `Great job! You got a perfect 15 out of 15! You're so smart because you have learned from an awesome, beautiful, capable, dedicated, enthusiastic, helpful, superb, intelligent, graceful, and gorgeous ESL professor. 🎉👍`
         );
       }
       $(this).addClass("d-none");
@@ -157,10 +288,71 @@ $(function () {
   });
 
   $("#new").on("click", function () {
+    randomVocabulary = randomWords(vocabulary, 10);
     displaydefinition(randomVocabulary);
     displayVocabulary(randomVocabulary);
     $(this).addClass("d-none");
     $("#message").addClass("d-none");
     $("#check").removeClass("d-none");
   });
+
+  // onclick function for Part 1
+  $("#check_part_1").on("click", function () {
+    var totalSource = 0;
+    var nouns_string = $("#nouns").val();
+    userNounsList = nouns_string.split(", ").map(function (item) {
+      return item.toLowerCase().trim();
+    });
+    var verbs_string = $("#verbs").val();
+    userVerbsList = verbs_string.split(", ").map(function (item) {
+      return item.toLowerCase().trim();
+    });
+    var adjs_string = $("#adjs").val();
+    userAdjectivesList = adjs_string.split(", ").map(function (item) {
+      return item.toLowerCase().trim();
+    });
+    filterVocabularyByType(randomWordsWithN_V_Adj);
+    totalSource += getSource_displayAnwser(userNounsList, nounsList, "noun");
+    totalSource += getSource_displayAnwser(userVerbsList, verbsList, "verb");
+    totalSource += getSource_displayAnwser(
+      userAdjectivesList,
+      adjectivesList,
+      "adj"
+    );
+    $("textarea, #check_part_1").addClass("d-none");
+    $("textarea").val("");
+    $("#nouns_anwser, #verbs_anwser, #adjs_anwser").removeClass("d-none");
+    if (totalSource < 15) {
+      $("#message_part_1").html(`You are correct ${totalSource}/15.`);
+    } else {
+      addFireworks();
+      $("#message_part_1").html(
+        "Great job! You got a perfect 15 out of 15! You're so smart because you have learned of them by an awesome, beautiful, capable, dedicated, enthusiastic, helpful, generous, intelligent, outgoing, and positive  ESL professor. 🎉👍"
+      );
+    }
+    $("#message_part_1, #new_part_1").removeClass("d-none");
+  });
+  $("#new_part_1").on("click", function () {
+    verbsList = [];
+    userNounsList = [];
+    nounsList = [];
+    userAdjectivesList = [];
+    adjectivesList = [];
+    randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 15);
+    list_1 = randomWords(randomWordsWithN_V_Adj);
+    dispplayVocabulary_1(list_1);
+    $("#nouns_anwser, #verbs_anwser, #adjs_anwser, #new_part_1").addClass(
+      "d-none"
+    );
+    $("#nouns_anwser, #verbs_anwser, #adjs_anwser").html("");
+    $("#message_part_1").addClass("d-none");
+    $("#check_part_1, textarea").removeClass("d-none");
+  });
+  if (isMobile) {
+    // Add click event listener to scroll to top button if on mobile device
+    $("#check_part_1").on("click", function () {
+      $("html, body").animate({ scrollTop: 150 }, 500);
+      return false;
+    });
+  }
 });
