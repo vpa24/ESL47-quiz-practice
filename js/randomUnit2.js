@@ -1,6 +1,16 @@
 $(function () {
   var vocabularyList = [];
   var definitionList = [];
+  var userVerbsList = [];
+  var verbsList = [];
+  var userNounsList = [];
+  var nounsList = [];
+  var text = "";
+  // Check if device is a mobile device
+  const isMobile =
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+      navigator.userAgent
+    );
 
   var vocabulary = [
     {
@@ -16,7 +26,7 @@ $(function () {
         "the general weather conditions usually found in a particular place",
     },
     {
-      name: "threathen",
+      name: "threaten",
       type: "v",
       definition: "to be likely to damage or harm something",
     },
@@ -129,7 +139,8 @@ $(function () {
         "a general direction in which something is developing or changing",
     },
   ];
-
+  console.log(vocabulary.length);
+  console.log(vocabulary);
   function randomWords(words, number) {
     const shuffledWords = [...words]; // Make a copy of the input array
     for (let i = shuffledWords.length - 1; i > 0; i--) {
@@ -143,7 +154,7 @@ $(function () {
   }
 
   function getRandomWordsWithN_V_Adj(words) {
-    const types = ["n", "v", "adj"];
+    const types = ["n", "v"];
 
     // filter words to only include the desired types
     const filteredWords = words.filter((word) => types.includes(word.type));
@@ -165,7 +176,7 @@ $(function () {
 
     // select 6 random words of each type and map them to objects
     const randomWords = types.flatMap((type) => {
-      return shuffledWords[type].slice(0, 3).map((word) => ({
+      return shuffledWords[type].slice(0, 6).map((word) => ({
         name: word.name,
         type: word.type,
       }));
@@ -186,9 +197,15 @@ $(function () {
 
   function dispplayVocabulary_1(list_1) {
     var names = list_1.map((word) => word.name);
-    return $("#list_1").html(names.join(" "));
+    text = "";
+    names.forEach(connect_word_name);
+    console.log(names);
+    console.log(text);
+    return $("#list_1").html(text);
   }
-
+  function connect_word_name(item) {
+    text += `<span class="me-3">${item.trim()}</span>`+ "";
+  }
   function displayVocabulary(vocabulary) {
     vocabularyList = randomWords(vocabulary, 10);
     let vocaText = "<ol>";
@@ -231,8 +248,6 @@ $(function () {
         nounsList.push(vocabulary.name);
       } else if (vocabulary.type === "v") {
         verbsList.push(vocabulary.name);
-      } else if (vocabulary.type == "adj") {
-        adjectivesList.push(vocabulary.name);
       }
     }
   }
@@ -243,13 +258,6 @@ $(function () {
 
     userList.forEach((item) => {
       if (
-        type === "adj" &&
-        referenceList.includes(item) &&
-        adjectivesList.includes(item)
-      ) {
-        matchingItems.push(item);
-        source++;
-      } else if (
         type === "noun" &&
         referenceList.includes(item) &&
         nounsList.includes(item)
@@ -295,6 +303,7 @@ $(function () {
   }
   var randomVocabulary = randomWords(vocabulary, 10);
   var randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 15);
+  console.log(randomWordsWithN_V_Adj);
   var list_1 = randomWords(randomWordsWithN_V_Adj);
 
   displaydefinition(randomVocabulary);
@@ -392,21 +401,12 @@ $(function () {
     userVerbsList = verbs_string.split(", ").map(function (item) {
       return item.toLowerCase().trim();
     });
-    var adjs_string = $("#adjs").val();
-    userAdjectivesList = adjs_string.split(", ").map(function (item) {
-      return item.toLowerCase().trim();
-    });
     filterVocabularyByType(randomWordsWithN_V_Adj);
     totalSource += getSource_displayAnwser(userNounsList, nounsList, "noun");
     totalSource += getSource_displayAnwser(userVerbsList, verbsList, "verb");
-    totalSource += getSource_displayAnwser(
-      userAdjectivesList,
-      adjectivesList,
-      "adj"
-    );
     $("textarea, #check_part_1").addClass("d-none");
     $("textarea").val("");
-    $("#nouns_anwser, #verbs_anwser, #adjs_anwser").removeClass("d-none");
+    $("#nouns_anwser, #verbs_anwser").removeClass("d-none");
     if (totalSource < 15) {
       $("#message_part_1").html(`You are correct ${totalSource}/15.`);
     } else {
@@ -421,15 +421,11 @@ $(function () {
     verbsList = [];
     userNounsList = [];
     nounsList = [];
-    userAdjectivesList = [];
-    adjectivesList = [];
     randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 15);
     list_1 = randomWords(randomWordsWithN_V_Adj);
     dispplayVocabulary_1(list_1);
-    $("#nouns_anwser, #verbs_anwser, #adjs_anwser, #new_part_1").addClass(
-      "d-none"
-    );
-    $("#nouns_anwser, #verbs_anwser, #adjs_anwser").html("");
+    $("#nouns_anwser, #verbs_anwser, #new_part_1").addClass("d-none");
+    $("#nouns_anwser, #verbs_anwser").html("");
     $("#message_part_1").addClass("d-none");
     $("#check_part_1, textarea").removeClass("d-none");
   });

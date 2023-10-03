@@ -69,16 +69,65 @@
       </div>
     </nav>
     <div class="container p-4">
-      <h2 class="text-center text-info">Unit 2: Celeration & Festivals</h2>
-      <div class="w-90 pb-4">
-        Match the vocabulary word with its definition/meaning
+      <h2 class="text-center text-info">Unit 1: Animals</h2>
+      <div class="pb-4 fw-bold">
+        <span class="fs-4">PART A</span><br />
+        Write the vocabulary word in the category according to its part of
+        speech (1/2 ea)
+      </div>
+      <div
+        class="alert alert-success alert-dismissible fade show d-none"
+        role="alert"
+        id="message_part_1"
+      ></div>
+      <div id="part_1">
+        <div class="border border-dark-subtle px-4 py-2" id="list_1"></div>
+        <div class="row mt-2">
+          <div
+            class="col-xs-12 col-sm-6 border border-dark-subtle border-end-0"
+          >
+            <div class="border-bottom border-dark-subtle mb-1 fw-bold">
+              Nouns
+            </div>
+            <textarea
+              placeholder="You should add comma after each word e.g. home, school, mouse."
+              rows="8"
+              id="nouns"
+            ></textarea>
+            <div id="nouns_anwser" class="d-none"></div>
+          </div>
+          <div
+            class="col-xs-12 col-sm-6 border border-dark-subtle border-end-0"
+          >
+            <div class="border-bottom border-dark-subtle mb-1 fw-bold">
+              Verbs
+            </div>
+            <textarea
+              placeholder="You should add comma after each word e.g. eat, sing, walk."
+              rows="8"
+              id="verbs"
+            ></textarea>
+            <div id="verbs_anwser" class="d-none"></div>
+          </div>
+        </div>
+      </div>
+      <div class="text-center my-2">
+        <button type="button" class="btn btn-info mt-2" id="check_part_1">
+          Check!
+        </button>
+        <button type="button" class="btn btn-warning d-none" id="new_part_1">
+          Try a New Quiz
+        </button>
+      </div>
+      <div class="pb-4 mt-3 fw-bold">
+        <span class="fs-3">PART B</span><br />
+        Match the vocabulary word with its definition/meaning. (1/2 point each)
       </div>
       <div
         class="alert alert-success alert-dismissible fade show d-none"
         role="alert"
         id="message"
       >
-        <span></span>
         <button
           type="button"
           class="btn-close"
@@ -86,13 +135,13 @@
           aria-label="Close"
         ></button>
       </div>
-      <div class="row">
+      <div class="row align-items-stretch table-row-equal">
         <div class="col-xs-12 col-sm-3">
-          <h5 class="p-2 text-center">Vocabulary</h5>
+          <!-- <h5 class="p-2 text-center">Vocabulary</h5> -->
           <p id="vocabulary"></p>
         </div>
         <div class="col-xs-12 col-sm-9">
-          <h5 class="p-2 text-center">Definition</h5>
+          <!-- <h5 class="p-2 text-center">Definition</h5> -->
           <p id="definition"></p>
         </div>
       </div>
