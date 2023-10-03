@@ -297,7 +297,6 @@ $(function () {
   }
   var randomVocabulary = randomWords(vocabulary, 10);
   var randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 15);
-  console.log(randomWordsWithN_V_Adj);
   var list_1 = randomWords(randomWordsWithN_V_Adj);
 
   displaydefinition(randomVocabulary);
@@ -402,7 +401,7 @@ $(function () {
     $("textarea").val("");
     $("#nouns_anwser, #verbs_anwser").removeClass("d-none");
     if (totalSource < 15) {
-      $("#message_part_1").html(`You are correct ${totalSource}/15.`);
+      $("#message_part_1").html(`You are correct ${totalSource}/10.`);
     } else {
       addFireworks();
       $("#message_part_1").html(
