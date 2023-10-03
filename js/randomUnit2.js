@@ -195,12 +195,10 @@ $(function () {
 
   function dispplayVocabulary_1(list_1) {
     var names = list_1.map((word) => word.name);
-    text = "";
-    names.forEach(connect_word_name);
-    return $("#list_1").html(text);
+    return $("#list_1").html(names.join(" - "));
   }
   function connect_word_name(item) {
-    text += `<span class="me-3">${item.trim().replace(" ", "&nbsp;")}</span>`+ "";
+    text += `<span class="word_name">${item.trim()}</span>`+ " ";
   }
   function displayVocabulary(vocabulary) {
     vocabularyList = randomWords(vocabulary, 10);
