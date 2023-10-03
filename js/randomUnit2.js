@@ -139,8 +139,6 @@ $(function () {
         "a general direction in which something is developing or changing",
     },
   ];
-  console.log(vocabulary.length);
-  console.log(vocabulary);
   function randomWords(words, number) {
     const shuffledWords = [...words]; // Make a copy of the input array
     for (let i = shuffledWords.length - 1; i > 0; i--) {
@@ -199,12 +197,10 @@ $(function () {
     var names = list_1.map((word) => word.name);
     text = "";
     names.forEach(connect_word_name);
-    console.log(names);
-    console.log(text);
     return $("#list_1").html(text);
   }
   function connect_word_name(item) {
-    text += `<span class="me-3">${item.trim()}</span>`+ "";
+    text += `<span class="me-3">${item.trim().replace(" ", "&nbsp;")}</span>`+ "";
   }
   function displayVocabulary(vocabulary) {
     vocabularyList = randomWords(vocabulary, 10);
