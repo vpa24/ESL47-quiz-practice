@@ -42,7 +42,7 @@ $(function () {
       definition: "a gas that makes the air around the Earth warmer",
     },
     {
-      name: "atmostphere",
+      name: "atmosphere",
       type: "n",
       definition: "the layer around the Earth",
     },
@@ -57,7 +57,7 @@ $(function () {
       definition: "someone or something that makes something happen",
     },
     {
-      name: "absord",
+      name: "absorb",
       type: "v",
       definition: "to take in a liquid or gas through a surface and hold it",
     },
