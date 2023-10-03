@@ -296,7 +296,7 @@ $(function () {
     );
   }
   var randomVocabulary = randomWords(vocabulary, 10);
-  var randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 15);
+  var randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 10);
   var list_1 = randomWords(randomWordsWithN_V_Adj);
 
   displaydefinition(randomVocabulary);
@@ -365,7 +365,7 @@ $(function () {
         );
       } else {
         $("#message").html(
-          `Great job! You got a perfect 15 out of 15! You're so smart because you have learned from an awesome, beautiful, capable, dedicated, enthusiastic, helpful, superb, intelligent, graceful, and gorgeous ESL professor. 🎉👍`
+          `Great job! You got a perfect 10 out of 10! You're so smart because you have learned from an awesome, beautiful, capable, dedicated, enthusiastic, helpful, superb, intelligent, graceful, and gorgeous ESL professor. 🎉👍`
         );
       }
       $(this).addClass("d-none");
@@ -405,7 +405,7 @@ $(function () {
     } else {
       addFireworks();
       $("#message_part_1").html(
-        "Great job! You got a perfect 15 out of 15! You're so smart because you have learned of them by an awesome, beautiful, capable, dedicated, enthusiastic, helpful, generous, intelligent, outgoing, and positive  ESL professor. 🎉👍"
+        "Great job! You got a perfect 10 out of 10! You're so smart because you have learned of them by an awesome, beautiful, capable, dedicated, enthusiastic, helpful, generous, intelligent, outgoing, and positive  ESL professor. 🎉👍"
       );
     }
     $("#message_part_1, #new_part_1").removeClass("d-none");
@@ -414,7 +414,7 @@ $(function () {
     verbsList = [];
     userNounsList = [];
     nounsList = [];
-    randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 15);
+    randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 10);
     list_1 = randomWords(randomWordsWithN_V_Adj);
     dispplayVocabulary_1(list_1);
     $("#nouns_anwser, #verbs_anwser, #new_part_1").addClass("d-none");
