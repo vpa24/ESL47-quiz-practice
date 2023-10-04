@@ -60,7 +60,7 @@ $(function () {
     },
     {
       name: "cruel",
-      type: "n",
+      type: "adj",
       definition: "extremely unkind and causing pain to people or animals",
     },
     {
