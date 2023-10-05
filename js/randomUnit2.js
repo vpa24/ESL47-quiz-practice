@@ -106,8 +106,7 @@ $(function () {
     {
       name: "challenge",
       type: "n",
-      definition:
-        "something difficult to accomplish",
+      definition: "something difficult to accomplish",
     },
     {
       name: "consequences",
@@ -118,8 +117,7 @@ $(function () {
     {
       name: "contributes to",
       type: "v",
-      definition:
-        "help to cause or bring about",
+      definition: "help to cause or bring about",
     },
     {
       name: "issue",
@@ -129,8 +127,7 @@ $(function () {
     {
       name: "predict",
       type: "v",
-      definition:
-        "to say what will happen before it occurs",
+      definition: "to say what will happen before it occurs",
     },
     {
       name: "trend",
@@ -198,7 +195,7 @@ $(function () {
     return $("#list_1").html(names.join(" - "));
   }
   function connect_word_name(item) {
-    text += `<span class="word_name">${item.trim()}</span>`+ " ";
+    text += `<span class="word_name">${item.trim()}</span>` + " ";
   }
   function displayVocabulary(vocabulary) {
     vocabularyList = randomWords(vocabulary, 10);
@@ -384,7 +381,7 @@ $(function () {
   });
 
   // onclick function for Part 1
-  $("#check_part_1").on("click", function () 
+  $("#check_part_1").on("click", () => {
     var totalSource = 0;
     var nouns_string = $("#nouns").val();
     userNounsList = nouns_string.split(", ").map(function (item) {
