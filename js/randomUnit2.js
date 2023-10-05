@@ -194,9 +194,6 @@ $(function () {
     var names = list_1.map((word) => word.name);
     return $("#list_1").html(names.join(" - "));
   }
-  function connect_word_name(item) {
-    text += `<span class="word_name">${item.trim()}</span>` + " ";
-  }
   function displayVocabulary(vocabulary) {
     vocabularyList = randomWords(vocabulary, 10);
     let vocaText = "<ol>";
