@@ -96,47 +96,47 @@ $(function () {
     {
       name: "annual",
       type: "adj",
-      definition: "occurring once every year",
+      definition: "happening once a year",
     },
     {
-      name: "area",
+      name: "areas",
       type: "n",
-      definition: "a particular part of a place, piece of land, or country",
+      definition: "certain spaces, regions, or sections",
     },
     {
       name: "challenge",
       type: "n",
       definition:
-        "something that needs great mental or physical effort in order to be done successfully and therefore tests a person's ability",
+        "something difficult to accomplish",
     },
     {
-      name: "consequence",
+      name: "consequences",
       type: "n",
       definition:
         "a result of a particular action or situation, often one that is bad or not convenient",
     },
     {
-      name: "contribute to",
+      name: "contributes to",
       type: "v",
       definition:
-        "to give or supply (something, such as money or time) as a part or share",
+        "help to cause or bring about",
     },
     {
       name: "issue",
       type: "n",
-      definition: "a vital or unsettled matter concern, problem",
+      definition: "an important topic or problem for debate or discussion",
     },
     {
       name: "predict",
       type: "v",
       definition:
-        "say or estimate that (a specified thing) will happen in the future or will be a consequence of something",
+        "to say what will happen before it occurs",
     },
     {
       name: "trend",
       type: "n",
       definition:
-        "a general direction in which something is developing or changing",
+        "a general direction in which something is developing or changing; something that is currently popular or fashionable",
     },
   ];
   function randomWords(words, number) {
@@ -384,7 +384,7 @@ $(function () {
   });
 
   // onclick function for Part 1
-  $("#check_part_1").on("click", function () {
+  $("#check_part_1").on("click", function () 
     var totalSource = 0;
     var nouns_string = $("#nouns").val();
     userNounsList = nouns_string.split(", ").map(function (item) {
