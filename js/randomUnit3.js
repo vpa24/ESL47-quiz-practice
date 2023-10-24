@@ -59,7 +59,8 @@ $(function () {
     {
       name: "emergency",
       type: "n",
-      definition: "an unexpected situation that requires immediate action",
+      definition:
+        "an unexpected, life-threatening situation that requires immediate action",
     },
     {
       name: "engineering",
@@ -82,7 +83,7 @@ $(function () {
     {
       name: "parctical",
       type: "adj",
-      definition: "usefull suitable for the situation it is being used for",
+      definition: "useful; suitable for the situation it is being used for",
     },
     {
       name: "vehicle",
@@ -93,43 +94,43 @@ $(function () {
     {
       name: "attempt",
       type: "v",
-      definition: "an effort to achieve or complete a difficult task or action",
+      definition: "to try (to do something); to make an effort",
     },
     {
       name: "consider",
       type: "v",
-      definition:
-        "think carefully about (something), typically before making a decision",
+      definition: "think about carefully; weigh",
     },
     {
       name: "convince",
       type: "v",
-      definition: "persuade (someone) to do something",
+      definition:
+        "make (someone) agree; persuade or show conclusively by argument or proof",
     },
     {
       name: "prevent",
       type: "v",
-      definition: "stop (someone) from doing something",
+      definition: "to stop something from happening",
     },
     {
       name: "produce",
       type: "v",
-      definition: "make or manufacture from components or raw materials",
+      definition: "to make (something), especially by using machines",
     },
     {
       name: "reduce",
       type: "v",
-      definition: "make smaller or less in amount, degree, or size",
+      definition: "to something smaller or less",
     },
     {
       name: "require",
       type: "v",
-      definition: "need for a particular purpose",
+      definition: "to need something or make something necessary",
     },
     {
       name: "waste",
       type: "v",
-      definition: "use or expend carelessly, extravagantly, or to no purpose",
+      definition: "to spend or use without need or care; to make bad use of",
     },
   ];
   function randomWords(words, number) {
