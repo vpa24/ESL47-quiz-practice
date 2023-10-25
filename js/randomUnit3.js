@@ -5,7 +5,7 @@ $(function () {
   var verbsList = [];
   var userNounsList = [];
   var nounsList = [];
-  var text = "";
+  var adjectivesList = [];
   // Check if device is a mobile device
   const isMobile =
     /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
@@ -410,12 +410,12 @@ $(function () {
     $("textarea, #check_part_1").addClass("d-none");
     $("textarea").val("");
     $("#nouns_anwser, #verbs_anwser, #adjs_anwser").removeClass("d-none");
-    if (totalSource < 12) {
-      $("#message_part_1").html(`You are correct ${totalSource}/12.`);
+    if (totalSource < 9) {
+      $("#message_part_1").html(`You are correct ${totalSource}/9.`);
     } else {
       addFireworks();
       $("#message_part_1").html(
-        "Great job! You got a perfect 12 out of 12! You're so smart because you have learned of them by an awesome, beautiful, capable, dedicated, enthusiastic, helpful, generous, intelligent, outgoing, and positive  ESL professor. 🎉👍"
+        "Great job! You got a perfect 9 out of 9! You're so smart because you have learned of them by an awesome, beautiful, capable, dedicated, enthusiastic, helpful, generous, intelligent, outgoing, and positive  ESL professor. 🎉👍"
       );
     }
     $("#message_part_1, #new_part_1").removeClass("d-none");
@@ -426,8 +426,9 @@ $(function () {
     nounsList = [];
     userAdjectivesList = [];
     adjectivesList = [];
-    randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 12);
+    randomWordsWithN_V_Adj = getRandomWordsWithN_V_Adj(vocabulary, 9);
     list_1 = randomWords(randomWordsWithN_V_Adj);
+    console.log(list_1);
     dispplayVocabulary_1(list_1);
     $("#nouns_anwser, #verbs_anwser, #adjs_anwser, #new_part_1").addClass(
       "d-none"
