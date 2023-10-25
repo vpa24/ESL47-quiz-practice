@@ -81,7 +81,7 @@ $(function () {
         "the group of people that controls a country or city and makes decisions about laws, taxes, education, etc.",
     },
     {
-      name: "parctical",
+      name: "practical",
       type: "adj",
       definition: "useful; suitable for the situation it is being used for",
     },
